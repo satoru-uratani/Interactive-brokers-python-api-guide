@@ -11,8 +11,8 @@ class IBapi(EWrapper, EClient):
 		EClient.__init__(self, self)
 
 	def tickPrice(self, reqId, tickType, price, attrib):
-		if tickType == 2 and reqId == 1:
-			print('The current ask price is: ', price)
+		#if tickType == 2 and reqId == 1:
+		print('The current ask price is: ', price)
 
 def run_loop():
 	app.run()
@@ -28,12 +28,13 @@ time.sleep(1) #Sleep interval to allow time for connection to server
 
 #Create contract object
 apple_contract = Contract()
-apple_contract.symbol = 'AAPL'
+apple_contract.symbol = '8306'
 apple_contract.secType = 'STK'
 apple_contract.exchange = 'SMART'
-apple_contract.currency = 'USD'
+apple_contract.currency = 'JPY'
 
 #Request Market Data
+app.reqMarketDataType(4)
 app.reqMktData(1, apple_contract, '', False, False, [])
 
 time.sleep(10) #Sleep interval to allow time for incoming price data
